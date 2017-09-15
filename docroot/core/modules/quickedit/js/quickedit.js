@@ -375,10 +375,9 @@
       var $lowestCommonParent = $(entityElementSelector).parents().has(fieldElement).first();
       entityElement = $lowestCommonParent.find(entityElementSelector);
     }
-    var entityInstanceID = entityElement
-      .get(0)
-      .getAttribute('data-quickedit-entity-instance-id');
-
+    if (typeof entityElement.get(0) !== 'undefined') {
+      var entityInstanceID = entityElement.get(0).getAttribute('data-quickedit-entity-instance-id');
+    }
     // Early-return if metadata for this field is missing.
     if (!metadata.has(fieldID)) {
       fieldsMetadataQueue.push({

@@ -1,0 +1,28 @@
+uuid: 17bf2668-6d01-428b-ae97-d4716046e789
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - df_tools_blocks
+  theme:
+    - obio
+third_party_settings:
+  block_class:
+    classes: ''
+id: inlinemanual_obio
+theme: obio
+region: footer_last
+weight: 0
+provider: null
+plugin: code_block
+settings:
+  id: code_block
+  label: Inlinemanual
+  provider: df_tools_blocks
+  label_display: '0'
+  code:
+    value: "<script>window.inlineManualOptions = { language: 'en'};</script>\r\n<script>!function(){var e=document.createElement(\"script\"),t=document.getElementsByTagName(\"script\")[0];e.async=1,e.src=\"https://inlinemanual.com/embed/player.365b1ebbef348f60a86468831e9d055a.js\",e.charset=\"UTF-8\",t.parentNode.insertBefore(e,t)}();</script>"
+    format: full_html
+visibility: {  }
+

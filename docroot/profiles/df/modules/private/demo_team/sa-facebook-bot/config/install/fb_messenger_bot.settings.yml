@@ -1,0 +1,11 @@
+fb_api_url: 'https://graph.facebook.com/v2.6/'
+fb_verify_token: ''
+fb_page_access_token: 'EAAQ8DWFCZBqEBAKZBAZBLLHulezgvl1QjENOkDrPMee7xlQunM3fDNS6wogyHjljnin8MVLon245CIQhCC1LGsl15u2ZAxTp8AhFAj0e9eKIf6I5Y0uPM3DsEyJ0d1ZAtxUyfzhQTTCjkI72Sr0ZAQtmDWYnyIwwx9EkCTixnwDgZDZD'
+logging:
+  log_incoming_post: '0'
+  log_http_response: '0'
+  log_outgoing_post: '0'
+queueing:
+  incoming:
+    timeout: 30
+trolling_threshold: 3

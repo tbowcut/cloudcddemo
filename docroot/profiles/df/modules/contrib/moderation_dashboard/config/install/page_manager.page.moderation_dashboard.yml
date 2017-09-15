@@ -1,0 +1,14 @@
+uuid: 15d9f2b2-c521-4206-ba88-ebcd4b61838c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XaYvnADT_euq-ybnKvJMpWiYx3CJwZZcq8ZG4n9Gbxg
+id: moderation_dashboard
+label: 'Moderation Dashboard'
+description: ''
+use_admin_theme: false
+path: '/user/{user}/moderation/dashboard'
+access_logic: and
+access_conditions: {  }
+parameters: {  }

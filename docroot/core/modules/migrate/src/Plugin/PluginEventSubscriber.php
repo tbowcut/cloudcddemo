@@ -83,10 +83,12 @@ class PluginEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events = [];
-    $events[MigrateEvents::PRE_IMPORT][] = ['preImport'];
-    $events[MigrateEvents::POST_IMPORT][] = ['postImport'];
-    $events[MigrateEvents::PRE_ROLLBACK][] = ['preRollback'];
-    $events[MigrateEvents::POST_ROLLBACK][] = ['postRollback'];
+    if (class_exists('Drupal\migrate\Event\MigrateEvents')) {
+      $events[MigrateEvents::PRE_IMPORT][] = ['preImport'];
+      $events[MigrateEvents::POST_IMPORT][] = ['postImport'];
+      $events[MigrateEvents::PRE_ROLLBACK][] = ['preRollback'];
+      $events[MigrateEvents::POST_ROLLBACK][] = ['postRollback'];
+    }
 
     return $events;
   }

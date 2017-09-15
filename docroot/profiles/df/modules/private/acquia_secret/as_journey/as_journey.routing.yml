@@ -1,0 +1,6 @@
+as_journey.facebook:
+  path: '/demo/facebook'
+  defaults:
+    _controller: '\Drupal\as_journey\Controller\FacebookController::demo'
+  requirements:
+    _permission: 'access content'

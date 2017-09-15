@@ -270,7 +270,7 @@ class QuickEditController extends ControllerBase {
       $output = $this->moduleHandler()->invoke($module, 'quickedit_render_field', $args);
     }
 
-    return $this->renderer->renderRoot($output);
+    return $this->renderer->render($output);
   }
 
   /**

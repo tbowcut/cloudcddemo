@@ -135,6 +135,8 @@ class BlockPageVariant extends VariantBase implements PageVariantInterface, Cont
     // Load all region content assigned via blocks.
     $cacheable_metadata_list = [];
     foreach ($this->blockRepository->getVisibleBlocksPerRegion($cacheable_metadata_list) as $region => $blocks) {
+      // Ensure there is an entry for every region.
+      $build[$region] = [];
       /** @var $blocks \Drupal\block\BlockInterface[] */
       foreach ($blocks as $key => $block) {
         $block_plugin = $block->getPlugin();
@@ -162,6 +164,12 @@ class BlockPageVariant extends VariantBase implements PageVariantInterface, Cont
         // \Drupal\block\BlockRepositoryInterface::getVisibleBlocksPerRegion()
         // returns the blocks in sorted order.
         $build[$region]['#sorted'] = TRUE;
+      }
+      // Every region for which we have cacheability metadata, must contain that
+      // cacheability metadata, otherwise the contexts by which its contents
+      // vary are impossible to know.
+      if (isset($cacheable_metadata_list[$region])) {
+        $cacheable_metadata_list[$region]->applyTo($build[$region]);
       }
     }
 

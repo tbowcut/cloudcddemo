@@ -1,0 +1,8 @@
+name: Moderation dashboard scheduled updates
+description: 'Provides a dashboard view for scheduled updates.'
+type: module
+package: Other
+core: 8.x
+dependencies:
+  - moderation_dashboard
+  - scheduled_updates

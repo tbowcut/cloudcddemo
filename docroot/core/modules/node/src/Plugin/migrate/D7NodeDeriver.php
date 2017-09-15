@@ -4,6 +4,7 @@ namespace Drupal\node\Plugin\migrate;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Database\ConnectionNotDefinedException;
 use Drupal\Core\Database\DatabaseExceptionWrapper;
 use Drupal\Core\Plugin\Discovery\ContainerDeriverInterface;
 use Drupal\migrate\Exception\RequirementsException;
@@ -127,6 +128,10 @@ class D7NodeDeriver extends DeriverBase implements ContainerDeriverInterface {
       // If checkRequirements() failed then the field module did not exist and
       // we do not have any fields. Therefore, $fields will be empty and below
       // we'll create a migration just for the node properties.
+    }
+    catch (ConnectionNotDefinedException $e) {
+      // It's also possible that the source database is not defined. This can
+      // happen if a source migration is unused or only used as a base.
     }
 
     try {

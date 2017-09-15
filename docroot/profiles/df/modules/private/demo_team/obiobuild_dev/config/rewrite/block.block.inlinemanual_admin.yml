@@ -1,0 +1,4 @@
+settings:
+  code:
+    value: "<script>!function(){var e=document.createElement(\"script\"),t=document.getElementsByTagName(\"script\")[0];e.async=1,e.src=\"https://inlinemanual.com/embed/player.5f38b5bdc60b2243562609549a7e6f84.js\",e.charset=\"UTF-8\",t.parentNode.insertBefore(e,t)}();</script>\r\n"
+    format: full_html

@@ -1,0 +1,90 @@
+uuid: 8d9bd36f-c876-44b0-adac-73cf3faa5833
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.moderation_dashboard
+    - views.view.moderation_dashboard_in_review
+    - views.view.moderation_dashboard_recent_changes
+    - views.view.moderation_dashboard_recently_created
+  module:
+    - moderation_dashboard
+    - panels
+    - user
+    - views
+id: moderation_dashboard-panels_variant-1
+label: Creators
+variant: panels_variant
+variant_settings:
+  blocks:
+    cbec34cf-745e-49d0-b3d4-e610c8acd0be:
+      id: 'views_block:moderation_dashboard_in_review-block_3'
+      label: 'Your drafts'
+      provider: views
+      label_display: visible
+      views_label: 'Your drafts'
+      items_per_page: none
+      region: middle
+      weight: -1
+      uuid: cbec34cf-745e-49d0-b3d4-e610c8acd0be
+      context_mapping: {  }
+    0ac3b65f-b3b0-462e-9690-a6e66c87f251:
+      id: 'views_block:moderation_dashboard_recent_changes-block_2'
+      label: 'Your activity'
+      provider: views
+      label_display: visible
+      views_label: 'Your activity'
+      items_per_page: none
+      region: right
+      weight: -1
+      uuid: 0ac3b65f-b3b0-462e-9690-a6e66c87f251
+      context_mapping: {  }
+    65184e1a-ae20-4d32-aa23-2ee08656e29a:
+      id: moderation_dashboard_add_links
+      label: 'Add content'
+      provider: moderation_dashboard
+      label_display: visible
+      region: left
+      weight: -10
+      uuid: 65184e1a-ae20-4d32-aa23-2ee08656e29a
+      context_mapping: {  }
+    0806a81d-2606-4368-8aa2-48dc4c28563f:
+      id: 'views_block:moderation_dashboard_recently_created-block_2'
+      label: 'Content you created'
+      provider: views
+      label_display: visible
+      views_label: 'Content you created'
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 0806a81d-2606-4368-8aa2-48dc4c28563f
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 3b498abf-96bf-45fa-809d-e3f7cbecf63a
+  label: null
+  weight: 0
+  layout: moderation_dashboard
+  layout_settings: {  }
+  page_title: 'Moderation Dashboard'
+  storage_type: page_manager
+  storage_id: moderation_dashboard-panels_variant-1
+  builder: standard
+page: moderation_dashboard
+weight: -10
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      creator: creator
+    negate: false
+    context_mapping:
+      user: current_user
+  -
+    id: user_role
+    roles:
+      reviewer: reviewer
+    negate: true
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

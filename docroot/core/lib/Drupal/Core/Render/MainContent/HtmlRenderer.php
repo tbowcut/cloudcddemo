@@ -186,7 +186,7 @@ class HtmlRenderer implements MainContentRendererInterface {
    * @throws \LogicException
    *   If the selected display variant does not implement PageVariantInterface.
    */
-  protected function prepare(array $main_content, Request $request, RouteMatchInterface $route_match) {
+  public function prepare(array $main_content, Request $request, RouteMatchInterface $route_match) {
     // Determine the title: use the title provided by the main content if any,
     // otherwise get it from the routing information.
     $get_title = function (array $main_content) use ($request, $route_match) {

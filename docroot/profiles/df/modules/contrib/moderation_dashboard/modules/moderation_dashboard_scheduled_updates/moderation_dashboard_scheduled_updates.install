@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file Contains install routines for the moderation_dashboard module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function moderation_dashboard_scheduled_updates_install() {
+  if (!\Drupal::isConfigSyncing()) {
+    $config = \Drupal::configFactory()
+      ->getEditable('page_manager.page_variant.moderation_dashboard-panels_variant-0');
+    $blocks = $config->get('variant_settings.blocks');
+    $blocks['328cb740-154a-478c-9b3c-60aa94a6af7a'] = [
+      'id' => 'views_block:moderation_dashboard_scheduled_updates-block_1',
+      'label' => 'Scheduled updates',
+      'provider' => 'views',
+      'label_display' => 'visible',
+      'views_label' => 'Scheduled updates',
+      'items_per_page' => 'none',
+      'region' => 'right',
+      'weight' => 1,
+      'uuid' => '328cb740-154a-478c-9b3c-60aa94a6af7a',
+      'context_mapping' => [],
+    ];
+    $config->set('variant_settings.blocks', $blocks);
+    $config->save(TRUE);
+  }
+}

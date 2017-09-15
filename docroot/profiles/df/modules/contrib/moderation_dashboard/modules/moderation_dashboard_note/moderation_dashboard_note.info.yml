@@ -1,0 +1,8 @@
+name: Moderation dashboard note
+description: 'Provides a dashboard view for assigned Moderation Notes.'
+type: module
+package: Other
+core: 8.x
+dependencies:
+  - moderation_dashboard
+  - moderation_note

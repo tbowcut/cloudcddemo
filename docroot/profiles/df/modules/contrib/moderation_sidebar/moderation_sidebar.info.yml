@@ -1,0 +1,16 @@
+name: 'Moderation Sidebar'
+type: module
+description: 'Provides a frontend sidebar for Content Moderation'
+# version: VERSION
+# core: 8.x
+package: Other
+dependencies:
+  - outside_in
+test_dependencies:
+  - workbench_moderation
+
+# Information added by Drupal.org packaging script on 2017-06-16
+version: '8.x-1.0-alpha1'
+core: '8.x'
+project: 'moderation_sidebar'
+datestamp: 1497635959

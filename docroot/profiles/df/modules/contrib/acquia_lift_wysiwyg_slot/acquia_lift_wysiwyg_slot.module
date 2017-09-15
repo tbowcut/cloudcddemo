@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains acquia_lift_wysiwyg_slot.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function acquia_lift_wysiwyg_slot_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the acquia_lift_wysiwyg_slot module.
+    case 'help.page.acquia_lift_wysiwyg_slot':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Button for inserting a Lift slot placeholder into CKeditor.') . '</p>';
+      $output .= '<p>' . t('To enable - you must add the Lift slot button to your active CKeditor editor profile.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

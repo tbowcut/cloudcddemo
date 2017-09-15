@@ -55,6 +55,12 @@ class BlockRepository implements BlockRepositoryInterface {
       /** @var \Drupal\block\BlockInterface $block */
       $access = $block->access('view', NULL, TRUE);
       $region = $block->getRegion();
+
+      // Ignore unplaced blocks.
+      if ($region == BlockInterface::BLOCK_REGION_NONE) {
+        continue;
+      }
+
       if (!isset($cacheable_metadata[$region])) {
         $cacheable_metadata[$region] = CacheableMetadata::createFromObject($access);
       }

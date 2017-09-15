@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Contains dfs_obio_contact.module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Makes sure out complex HTML response is unfiltered.
+ */
+function dfs_obio_contact_mail_alter(&$message) {
+  if ($message['module'] === 'contact' && $message['key'] === 'page_autoreply' && isset($message['params']['contact_message'])) {
+    /** @var \Drupal\contact\ContactFormInterface $contact_form */
+    $contact_form = $message['params']['contact_form'];
+    if ($contact_form->id() === 'check_in') {
+      $to = preg_split('/,/', $message['to'])[0];
+      $url = Url::fromUri('internal:/product/eco-friendly-collection');
+      $url->setOption('query', [
+        'identity' => $to,
+        'identityType' => 'email',
+        'utm_campaign' => 'obioboston'
+      ]);
+      $url = $url->setAbsolute(TRUE)->toString();
+      if ($reply = $contact_form->getReply()) {
+        $temp = [
+          '#type' => 'inline_template',
+          '#template' => str_replace('REPLACEME_URL', $url, $reply),
+        ];
+        $message['body'] = [render($temp)];
+        $message['headers']['Content-Type'] = 'text/html';
+        $message['params']['convert'] = TRUE;
+        $message['subject'] = 'Obio: Save 20% on your order';
+        $message['from'] = '"Obio" <admin@example.com>';
+      }
+    }
+  }
+}

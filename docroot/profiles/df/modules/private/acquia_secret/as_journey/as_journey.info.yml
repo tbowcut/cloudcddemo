@@ -1,0 +1,7 @@
+name: AS Journey
+type: module
+description: Contains custom functionality required for our Journey demo.
+core: 8.x
+package: Demo Framework Secret Modules
+dependencies:
+ - as_lift

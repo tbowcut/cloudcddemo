@@ -4,6 +4,7 @@ namespace Drupal\node\Plugin\migrate;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Database\ConnectionNotDefinedException;
 use Drupal\Core\Database\DatabaseExceptionWrapper;
 use Drupal\Core\Plugin\Discovery\ContainerDeriverInterface;
 use Drupal\migrate\Exception\RequirementsException;
@@ -190,6 +191,10 @@ class D6NodeDeriver extends DeriverBase implements ContainerDeriverInterface {
       // source tables will not exist. This can happen when the
       // MigrationPluginManager gathers up the migration definitions but we do
       // not actually have a Drupal 6 source database.
+    }
+    catch (ConnectionNotDefinedException $e) {
+      // It's also possible that the source database is not defined. This can
+      // happen if a source migration is unused or only used as a base.
     }
 
     return $this->derivatives;

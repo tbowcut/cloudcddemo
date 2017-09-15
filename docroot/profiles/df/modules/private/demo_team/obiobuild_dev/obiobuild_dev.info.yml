@@ -1,0 +1,7 @@
+name: obiobuild_dev
+type: module
+description: 'Do not enable this dev module!'
+package: Core (Experimental)
+version: VERSION
+core: 8.x
+hidden: TRUE
